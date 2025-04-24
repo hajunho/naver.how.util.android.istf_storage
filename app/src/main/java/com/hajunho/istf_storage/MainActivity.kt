@@ -97,13 +97,21 @@ class MainActivity : ComponentActivity() {
     // 전체 저장 용량을 반환하는 메소드
     private fun getTotalBytes(path: File): Long {
         val stats = StatFs(path.path)
-        return stats.totalBytes
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            stats.totalBytes
+        } else {
+            stats.blockSize.toLong() * stats.blockCount.toLong()
+        }
     }
 
     // 남은 저장 용량을 반환하는 메소드
     private fun getFreeBytes(path: File): Long {
         val stats = StatFs(path.path)
-        return stats.availableBytes
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            stats.availableBytes
+        } else {
+            stats.blockSize.toLong() * stats.availableBlocks.toLong()
+        }
     }
 
     // 바이트 단위를 사람이 읽기 쉬운 형식으로 변환하는 메소드

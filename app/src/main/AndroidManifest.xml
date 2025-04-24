@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.READ_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- API 33 이상에서는 READ_MEDIA_STORAGE 권한 사용 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_STORAGE"
+        android:maxSdkVersion="33" />
 
     <application
         android:allowBackup="true"

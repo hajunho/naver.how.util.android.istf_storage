@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.hajunho.istf_storage"
-        minSdk = 33
+        minSdk = 26  // 더 낮은 API 레벨로 변경
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
